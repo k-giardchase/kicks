@@ -17,11 +17,26 @@
            $brand_name = 'Addidas';
            $id = 1;
            $test_brand = new Brand($brand_name, $id);
-           
+
            //Act
            $result = $test_brand->getBrandName();
 
            //Assert
+           $this->assertEquals($brand_name, $result);
+       }
+
+       function test_setBrandName()
+       {
+           //Arrange
+           $brand_name = 'Addidas';
+           $id = 1;
+           $test_brand = new Brand($brand_name, $id);
+
+           //Act
+           $test_brand->setBrandName('Nike');
+
+           //Assert
+           $result = $test_brand->getBrandName();
            $this->assertEquals($brand_name, $result);
        }
    }
