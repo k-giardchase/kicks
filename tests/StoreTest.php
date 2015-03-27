@@ -10,7 +10,7 @@
    require_once 'src/Store.php';
    require_once 'src/Brand.php';
 
-   class ShoeTest extends PHPUnit_Framework_TestCase
+   class StoreTest extends PHPUnit_Framework_TestCase
    {
 
        protected function tearDown()
@@ -207,8 +207,8 @@
            $test_store->addBrand($test_brand);
 
            //Assert
-           $result = $test_stores->getBrands();
-           $this->assertEquals([$test_brand], $result);
+           $result = $test_store->getBrands();
+           $this->assertEquals([$test_brand], $test_store->getBrands());
        }
 
        function test_getBrands()
@@ -234,8 +234,8 @@
            $test_store->addBrand($test_brand2);
 
            //Assert
-           $result = $test_store->getBrands();
-           $this->assertEquals([$test_brand, $test_brand2], $result);
+           var_dump($test_store->getBrands());
+           $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
        }
    }
 
