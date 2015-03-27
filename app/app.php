@@ -91,11 +91,13 @@
     });
 
     $app->post('/add_store', function() use ($app) {
-        $brand = Brand::find($_POST['brand_id']);
-        $store_name = $_POST['store'];
-        $new_store = new Store($store_name);
-        $new_store->save();
-        $brand->addStore($new_store);
+
+
+        // $brand = Brand::find($_POST['brand_id']);
+        // $store_name = $_POST['store'];
+        // $new_store = new Store($store_name);
+        // $new_store->save();
+        // $brand->addStore($new_store);
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores'=> $brand->getStores(), 'allstores' => Store::getAll()));
     });
 
