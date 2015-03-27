@@ -38,6 +38,21 @@
             $this->setId($result['id']);
         }
 
+        function getAll()
+        {
+            $query = $GLOBALS['DB']->query("SELECT * FROM stores;");
+            $returned_stores = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            $stores = array();
+            foreach($returned_stores as $store){
+                $name = $store['name'];
+                $id = $store['id'];
+                $new_store = new Store($name, $id);
+                array_push($stores, $new_store);
+            }
+            return $stores;
+        }
+
     }
 
 ?>
