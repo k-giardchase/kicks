@@ -37,6 +37,21 @@
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             $this->setId($result['id']);
         }
+
+        function getAll()
+        {
+            $query = $GLOBALS['DB']->query("SELECT * FROM brands;");
+            $returned_brands = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            $brands = array();
+            foreach($returned_brands as $brand){
+                $brand_name = $brand['brand_name'];
+                $id = $brand['id'];
+                $new_brand = new Brand($brand_name, $id);
+                array_push($brands, $new_brand);
+            }
+            return $brands;
+        }
     }
 
 
