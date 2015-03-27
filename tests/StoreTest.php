@@ -131,7 +131,7 @@
            $this->assertEquals([], $result);
        }
 
-       function testUpdate()
+       function test_update()
        {
            //Arrange
            $name = 'kicks';
@@ -145,6 +145,27 @@
 
            //Assert
            $this->assertEquals('kicks r us', $test_store->getName());
+       }
+
+       function test_delete()
+       {
+           //Arrange
+           $name = 'kicks';
+           $id = 1;
+           $test_store = new Store($name, $id);
+           $test_store->save();
+
+           $name2 = 'kicks r us';
+           $id2 = 2;
+           $test_store2 = new Store($name2, $id2);
+           $test_store2->save();
+
+           //Act
+           $test_store->delete();
+
+           //Assert
+           $result = Store::getAll();
+           $this->assertEquals([$test_store2], $result);
        }
 
        function test_find()
