@@ -82,6 +82,11 @@
             $GLOBALS['DB']->exec("DELETE FROM stores *;");
         }
 
+        function addBrand($new_brand)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores_brands VALUES ({$this->getId()}, {$new_brand->getId()};");
+        }
+
     }
 
 ?>
