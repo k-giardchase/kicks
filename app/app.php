@@ -21,6 +21,7 @@
 
     $app->post('/create_store', function() use ($app) {
         $name = $_POST['name'];
+        $id = null;
         $new_store = new Store($name, $id);
         $new_store->save();
         return $app['twig']->render('index.html.twig', array('stores' => Store::getAll(), 'brands'=> Brand::getAll()));
