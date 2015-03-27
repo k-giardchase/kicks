@@ -14,9 +14,9 @@
 
     <form action='/add_store' method='post'>
         <input id='brand_id' name='brand_id' type='hidden' value='{{ brand.getId }}'>
-        <label for='store'>Select a store</label>
+        <label for='store_id'>Select a store</label>
         {% if allstores is not empty %}
-        <select id='store' name='store' type='text'>
+        <select id='store_id' name='store_id' type='text'>
           {% for one_store in allstores %}
             <option value="{{ one_store.getId }}"> {{ one_store.getName }} </option>
           {% endfor %}
