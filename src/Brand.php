@@ -38,7 +38,7 @@
             $this->setId($result['id']);
         }
 
-        function getAll()
+        static function getAll()
         {
             $query = $GLOBALS['DB']->query("SELECT * FROM brands;");
             $returned_brands = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -51,6 +51,11 @@
                 array_push($brands, $new_brand);
             }
             return $brands;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM brands *");
         }
     }
 
