@@ -1,25 +1,27 @@
 <html>
 <head>
-    <title>Edit store</title>
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <title>Edit this store</title>
 </head>
 <body>
-    <h1>{{ store.getName }}</h1>
-    <form action="/store/{{ store.getId }}" method="post">
-      <input name="_method" type="hidden" value="patch">
-      <label for="name">Rename your store:</label>
-      <input id="name" name="name" type="text">
+    <div class='container'>
+        <h1>Edit {{ store.getName }}</h1>
 
-      <button type="submit">Update</button>
-    </form>
+        <form action="/store/{{ store.getId }}" method="post">
+          <input name="_method" type="hidden" value="patch">
+          <label for="name">Rename your store:</label>
+          <input id="name" name="name" type="text">
+          <button type="submit">Update</button>
+        </form>
 
-    <form action="/store/{{ store.getId }}" method="post">
-      <input name="_method" type="hidden" value="delete">
+        <form action="/store/{{ store.getId }}" method="post">
+          <input name="_method" type="hidden" value="delete">
+          <button type="submit">Delete this store</button>
+        </form>
 
-      <button type="submit">Delete this store</button>
-    </form>
-
-<p><a href='/'>Home</a></p>
-<p><a href='/stores'>See all stores</a><p>
-<p><a href='/brands'>See all brands</a></p>
+        <p><a href='/'>Home</a></p>
+        <p><a href='/stores'>See all stores</a><p>
+        <p><a href='/brands'>See all brands</a></p>
+    </div>
 </body>
 </html>
