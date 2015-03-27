@@ -38,7 +38,7 @@
             $this->setId($result['id']);
         }
 
-        function getAll()
+        static function getAll()
         {
             $query = $GLOBALS['DB']->query("SELECT * FROM stores;");
             $returned_stores = $query->fetchAll(PDO::FETCH_ASSOC);
