@@ -144,7 +144,7 @@
            $test_store->update($new_name);
 
            //Assert
-           $this->assertEquals(['kicks r us', 1], $test_store->getName());
+           $this->assertEquals('kicks r us', $test_store->getName());
        }
 
 
