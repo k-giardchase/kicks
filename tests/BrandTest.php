@@ -7,22 +7,22 @@
    * $backupStaticAttribute disabled
    */
 
-   require_once 'src/Store.php';
+   require_once 'src/Brand.php';
 
    class BrandTest extends PHPUnit_Framework_TestCase
    {
        function test_getBrandName()
        {
            //Arrange
-           $brand_name = 'Adidas';
+           $brand_name = 'Addidas';
            $id = 1;
            $test_brand = new Brand($brand_name, $id);
-
+           
            //Act
            $result = $test_brand->getBrandName();
 
            //Assert
-           $this->assertEquals('Adidas', $result);
+           $this->assertEquals($brand_name, $result);
        }
    }
 ?>
