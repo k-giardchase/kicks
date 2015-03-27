@@ -20,6 +20,11 @@
         {
             $this->brand_name = (string) $new_brand_name;
         }
+
+        function getId()
+        {
+            return $this->id;
+        }
     }
 
 
