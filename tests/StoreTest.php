@@ -124,9 +124,10 @@
            $test_store2->save();
 
            //Act
-           $result = Store::deleteAll();
+           Store::deleteAll();
 
            //Assert
+           $result = Store::getAll();
            $this->assertEquals([], $result);
        }
 
