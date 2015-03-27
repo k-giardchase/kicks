@@ -8,6 +8,7 @@
    */
 
    require_once 'src/Store.php';
+   require_once 'src/Brand.php';
 
    class ShoeTest extends PHPUnit_Framework_TestCase
    {
@@ -15,6 +16,7 @@
        protected function tearDown()
        {
            Store::deleteAll();
+           Brand::deleteAll();
        }
 
        function test_getName()
