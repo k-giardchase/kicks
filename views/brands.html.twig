@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    {% if brands is not empty %}
+        <h3>brands</h3>
+        {% for brand in brands %}
+            <p><a href='/brand/{{ brand.getId }}'>{{ brand.getBrandName }}</a></p>
+        {% endfor %}
+    {% else %}
+        <h3>Sorry, there are no brands to display</h3>
+    {% endif %}
+
+    <form action='/create_brands' method='post'>
+        <label for='name'>Brand</label>
+        <input id='name' name='name' type='text' required>
+        <button type='submit'>Add a brand</button>
+    </form>
+
+    <form action='/delete_brands' method='post'>
+        <button type='submit'>Delete all brands</button>
+    </form>
+</body>
+</html>

@@ -6,34 +6,8 @@
 <body>
     <h1>Buy some kicks!</h1>
 
-    {% if stores is not empty %}
-        <h3>Stores</h3>
-        {% for store in stores %}
-            <p><a href='/store/{{ store.getId }}'>{{ store.getName }}</a></p>
-        {% endfor %}
-    {% else %}
-        <h3>Sorry, there are no stores to display</h3>
-    {% endif %}
+    <h2><a href='/stores'>See all stores</a></h2>
 
-    <form action='/create_store' method='post'>
-        <label for='name'>Name</label>
-        <input id='name' name='name' type='text' required>
-        <button type='submit'>Add a store</button>
-    </form>
-
-    {% if brands is not empty %}
-        <h3>brands</h3>
-        {% for brand in brands %}
-            <p><a href='/brand/{{ brand.getId }}'>{{ brand.getName }}</a></p>
-        {% endfor %}
-    {% else %}
-        <h3>Sorry, there are no brands to display</h3>
-    {% endif %}
-
-    <form action='/create_brand' method='post'>
-        <label for='brand'>Brand</label>
-        <input id='brand' name='brand' type='text' required>
-        <button type='submit'>Add a brand</button>
-    </form>
+    <h2><a href='/brands'>See all brands</a></h2>
 </body>
 </html>

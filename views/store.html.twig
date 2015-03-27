@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>{{ store.getName }}</h1>
+
+    {% if brands is not empty %}
+        <h3>Here are the brands that are available at {{ store.getName }}</h3>
+        {% for brand in brands %}
+            <p><a href='/brand/{{ brand.getId }}'>{{ brand.getBrandName }}</a></p>
+        {% endfor %}
+    {% else %}
+        <h3>Sorry, there are no brands to display</h3>
+    {% endif %}
+
+    <form action='/create_brand' method='post'>
+        <input id='store_id' name='store_id' type='hidden' value='{{ store.getId }}'>
+        <label for='brand_id'>Brand</label>
+        <input id='brand_id' name='brand_id' type='text' required>
+        <button type='submit'>Add a brand</button>
+    </form>
+
+    <form action='/store/{id}/edit' method='post'>
+        <button type='submit'>Edit this store</button>
+    </form>
+</body>
+</html>
