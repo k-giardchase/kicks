@@ -190,6 +190,27 @@
            $this->assertEquals($test_store, $result);
        }
 
+       function test_addBrand()
+       {
+           //Arrange
+           $name = 'kicks';
+           $id = 1;
+           $test_store = new Store($name, $id);
+           $test_store->save();
+
+           $brand_name = 'Kicks';
+           $id = 1;
+           $test_brand = new Brand($brand_name, $id);
+           $test_brand->save();
+
+           //Act
+           $test_store->addBrand($test_brand);
+
+           //Assert
+           $result = $test_stores->getBrands();
+           $this->assertEquals([$test_brand], $result);
+       }
+
    }
 
 
