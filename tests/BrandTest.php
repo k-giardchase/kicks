@@ -143,11 +143,11 @@
            $test_brand2->save();
 
            //Act
-           Brand::find($brand_name2->getId());
+           Brand::find($test_brand2->getId());
 
            //Assert
-           $result = $brand_name2
-           $this->assertEquals($brand_name2, $result);
+           $result = $test_brand2;
+           $this->assertEquals($test_brand2, $result);
        }
    }
 ?>
