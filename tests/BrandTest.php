@@ -172,5 +172,32 @@
            $result = $test_brand->getStores();
            $this->assertEquals([$test_store], $result);
        }
+
+       function test_getStores()
+       {
+           //Arrange
+           $name = 'kicks';
+           $id = 1;
+           $test_store = new Store($name, $id);
+           $test_store->save();
+
+           $name2 = 'kicks r us';
+           $id2 = 2;
+           $test_store2 = new Store($name2, $id2);
+           $test_store2->save();
+
+           $brand_name = 'Kicks';
+           $id = 1;
+           $test_brand = new Brand($brand_name, $id);
+           $test_brand->save();
+
+           //Act
+           $test_brand->addStore($test_store);
+           $test_brand->addStore($test_store2);
+
+           //Assert
+           $result = $test_brand->getStores();
+           $this->assertEquals([$test_store, $test_store2], $result);
+       }
    }
 ?>
