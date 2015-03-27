@@ -70,6 +70,21 @@
            $this->assertEquals(2, $result);
        }
 
+       function test_save()
+       {
+           //Arrange
+           $name = 'kicks';
+           $id = 1;
+           $test_store = new Store($name, $id);
+
+           //Act
+           $test_store->save();
+
+           //Assert
+           $result = Store::getAll();
+           $this->assertEquals([$test_store], $result);
+       }
+
 
 
    }
