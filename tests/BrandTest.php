@@ -36,8 +36,8 @@
            $test_brand->setBrandName('Nike');
 
            //Assert
-           $result = $test_brand->getBrandName();
-           $this->assertEquals($brand_name, $result);
+        
+           $this->assertEquals('Nike', $test_brand->getBrandName());
        }
    }
 ?>
