@@ -31,6 +31,13 @@
             $this->id = (int) $new_id;
         }
 
+        function save()
+        {
+            $statement = $GLOBALS['DB']->query("INSERT INTO stoes (name) VALUES ('{$this->getName()}') RETURNING id;");
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $this->setId($result['id']);
+        }
+
     }
 
 ?>
