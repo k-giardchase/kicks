@@ -52,15 +52,27 @@
     });
 
     //ClICK LINK FROM store{id} to edit individual store.
-    $app->get('/store/{id}/edit', function($id) use ($app) {
-        Store::find($id);
-        return $app['twig']->render('store_edit.html.twig', array('store' => Store::getAll(), 'brands'=> Brand::getAll()));
+    $app->post('/store/{id}/edit', function($id) use ($app) {
+        $store = Store::find($id);
+        return $app['twig']->render('store_edit.html.twig', array('store' => $store));
     });
 
+
+
     //PATCH TO store{id}edit to edit individual store
-    $app->patch('/store/{id}/edit', function($id) use ($app) {
-        Store::find($id);
+    $app->delete('/store/{id}', function($id) use ($app) {
+        $selected_store = Store::find($id);
+        $selected_store->delete();
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
     });
+
+    $app->patch('/store/{id}', function($id) use ($app) {
+        $selected_store = Store::find($id);
+        $new_store_name = new Store($_POST['name']);
+        $selected_store->update($new_store_name);
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
+    });
+
 
     //ADD A BRAND TO A PARTICULAR STORE - display store, all brands w/store
     $app->post('/create_brand', function() use ($app) {
