@@ -85,6 +85,26 @@
            $this->assertEquals([$test_store], $result);
        }
 
+       function test_getAll()
+       {
+           //Arrange
+           $name = 'kicks';
+           $id = 1;
+           $test_store = new Store($name, $id);
+           $test_store->save();
+
+           $name2 = 'kicks r us';
+           $id2 = 2;
+           $test_store2 = new Store($name2, $id2);
+           $test_store2->save();
+
+           //Act
+           $result = Store::getAll();
+
+           //Assert
+           $this->assertEquals([$test_store, $test_store2], $result);
+       }
+
 
 
    }
