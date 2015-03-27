@@ -147,6 +147,26 @@
            $this->assertEquals('kicks r us', $test_store->getName());
        }
 
+       function test_find()
+       {
+           //Arrange
+           $name = 'kicks';
+           $id = 1;
+           $test_store = new Store($name, $id);
+           $test_store->save();
+
+           $name2 = 'kicks r us';
+           $id2 = 2;
+           $test_store2 = new Store($name2, $id2);
+           $test_store2->save();
+
+           //Act
+           $result = Store::find($test_store->getId());
+
+           //Assert
+           $this->assertEquals($test_store, $result);
+       }
+
 
 
    }
