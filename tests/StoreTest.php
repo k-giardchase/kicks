@@ -234,7 +234,6 @@
            $test_store->addBrand($test_brand2);
 
            //Assert
-           var_dump($test_store->getBrands());
            $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
        }
    }
