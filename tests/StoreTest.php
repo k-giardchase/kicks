@@ -12,6 +12,11 @@
    class ShoeTest extends PHPUnit_Framework_TestCase
    {
 
+       protected function tearDown()
+       {
+           Store::deleteAll();
+       }
+
        function test_getName()
        {
            //Arrange
