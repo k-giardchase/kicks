@@ -16,6 +16,11 @@
             return $this->name;
         }
 
+        function setName()
+        {
+            
+        }
+
     }
 
 ?>
