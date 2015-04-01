@@ -11,13 +11,15 @@ You will need to create a database called shoes to use this app.
     In shoes,
     CREATE TABLE stores (id serial PRIMARY KEY, name varchar);
     CREATE TABLE brands (id serial PRIMARY KEY, brand_name varchar);
-    CREATE TABLE stores_brands (id serial PRIMARY KEY, store_id int, brand_id int);
+    CREATE TABLE brands_stores (id serial PRIMARY KEY, store_id int, brand_id int);
 
 To run the tests:
     CREATE DATABASE shoes_test WITH TEMPLATE shoes;
-    
+
 It uses Composer to install:
 <a href="https://phpunit.de/" target="_blank">PHPUnit</a>, <a href="http://silex.sensiolabs.org/" target="_blank">Silex</a>, and <a href="http://twig.sensiolabs.org/" target="_blank">Twig</a>.  It also links to a <a href="http://www.bootstrapcdn.com/" target="_blank">Bootstrap</a> CDN for CSS Styling.
+
+To view the app, start the php server in the web folder and then navigate to your root path.
 
 ###Copyright (c) 2015 Kyle Giard-Chase
 
