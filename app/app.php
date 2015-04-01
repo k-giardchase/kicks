@@ -94,7 +94,7 @@
     //click link from store{id}edit to update store name, send back to stores
     $app->patch('/store/{id}', function($id) use ($app) {
         $selected_store = Store::find($id);
-        $new_store_name = new Store($_POST['name']);
+        $new_store_name = $_POST['name'];
         $selected_store->update($new_store_name);
         return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
     });
