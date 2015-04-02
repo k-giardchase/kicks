@@ -68,12 +68,33 @@ ALTER SEQUENCE brands_id_seq OWNED BY brands.id;
 
 CREATE TABLE brands_stores (
     id integer NOT NULL,
-    store_id integer,
-    brand_id integer
+    brand_id integer,
+    store_id integer
 );
 
 
 ALTER TABLE brands_stores OWNER TO "Kyle";
+
+--
+-- Name: brands_stores_id_seq; Type: SEQUENCE; Schema: public; Owner: Kyle
+--
+
+CREATE SEQUENCE brands_stores_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE brands_stores_id_seq OWNER TO "Kyle";
+
+--
+-- Name: brands_stores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Kyle
+--
+
+ALTER SEQUENCE brands_stores_id_seq OWNED BY brands_stores.id;
+
 
 --
 -- Name: stores; Type: TABLE; Schema: public; Owner: Kyle; Tablespace: 
@@ -86,27 +107,6 @@ CREATE TABLE stores (
 
 
 ALTER TABLE stores OWNER TO "Kyle";
-
---
--- Name: stores_brands_id_seq; Type: SEQUENCE; Schema: public; Owner: Kyle
---
-
-CREATE SEQUENCE stores_brands_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE stores_brands_id_seq OWNER TO "Kyle";
-
---
--- Name: stores_brands_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Kyle
---
-
-ALTER SEQUENCE stores_brands_id_seq OWNED BY brands_stores.id;
-
 
 --
 -- Name: stores_id_seq; Type: SEQUENCE; Schema: public; Owner: Kyle
@@ -140,7 +140,7 @@ ALTER TABLE ONLY brands ALTER COLUMN id SET DEFAULT nextval('brands_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: Kyle
 --
 
-ALTER TABLE ONLY brands_stores ALTER COLUMN id SET DEFAULT nextval('stores_brands_id_seq'::regclass);
+ALTER TABLE ONLY brands_stores ALTER COLUMN id SET DEFAULT nextval('brands_stores_id_seq'::regclass);
 
 
 --
@@ -155,10 +155,7 @@ ALTER TABLE ONLY stores ALTER COLUMN id SET DEFAULT nextval('stores_id_seq'::reg
 --
 
 COPY brands (id, brand_name) FROM stdin;
-22	Puma
-23	Nike
-24	Addidas
-25	uFO
+26	Puma
 \.
 
 
@@ -166,40 +163,22 @@ COPY brands (id, brand_name) FROM stdin;
 -- Name: brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Kyle
 --
 
-SELECT pg_catalog.setval('brands_id_seq', 25, true);
+SELECT pg_catalog.setval('brands_id_seq', 26, true);
 
 
 --
 -- Data for Name: brands_stores; Type: TABLE DATA; Schema: public; Owner: Kyle
 --
 
-COPY brands_stores (id, store_id, brand_id) FROM stdin;
-1	6	1
-2	5	2
-3	5	3
-4	5	10
-5	5	11
-6	5	12
-7	13	11
-8	14	11
-9	15	11
-10	18	16
-11	19	16
-12	14	16
-13	15	18
-14	17	21
-15	20	20
-16	21	20
-17	19	20
-18	18	20
-19	23	22
-20	23	23
-21	23	24
-22	24	23
-23	25	23
-24	27	25
-25	27	25
+COPY brands_stores (id, brand_id, store_id) FROM stdin;
 \.
+
+
+--
+-- Name: brands_stores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Kyle
+--
+
+SELECT pg_catalog.setval('brands_stores_id_seq', 1, false);
 
 
 --
@@ -207,22 +186,15 @@ COPY brands_stores (id, store_id, brand_id) FROM stdin;
 --
 
 COPY stores (id, name) FROM stdin;
-27	Name
+28	Kicks R Us
 \.
-
-
---
--- Name: stores_brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Kyle
---
-
-SELECT pg_catalog.setval('stores_brands_id_seq', 25, true);
 
 
 --
 -- Name: stores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Kyle
 --
 
-SELECT pg_catalog.setval('stores_id_seq', 27, true);
+SELECT pg_catalog.setval('stores_id_seq', 28, true);
 
 
 --
@@ -234,11 +206,11 @@ ALTER TABLE ONLY brands
 
 
 --
--- Name: stores_brands_pkey; Type: CONSTRAINT; Schema: public; Owner: Kyle; Tablespace: 
+-- Name: brands_stores_pkey; Type: CONSTRAINT; Schema: public; Owner: Kyle; Tablespace: 
 --
 
 ALTER TABLE ONLY brands_stores
-    ADD CONSTRAINT stores_brands_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT brands_stores_pkey PRIMARY KEY (id);
 
 
 --

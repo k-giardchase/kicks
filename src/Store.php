@@ -85,7 +85,7 @@
 
         function addBrand($new_brand)
         {
-            $GLOBALS['DB']->exec("INSERT INTO brands_stores (store_id, brand_id) VALUES ({$this->getId()}, {$new_brand->getId()});");
+            $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$new_brand->getId()}, {$this->getId()});");
         }
 
         function getBrands()
